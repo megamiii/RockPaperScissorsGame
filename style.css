@@ -1,0 +1,160 @@
+/* Import Google Fonts (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/* Reset margin and padding for all elements and apply box-sizing and default font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'sans-serif';  /* Set font to Poppins for all elements */
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Stack title and container vertically */
+    align-items: center;     /* Horizontally center align title and content */
+    justify-content: center; /* Vertically center the entire content */
+    background: #e3e3e3;     /* Light background color */
+}
+
+/* Custom styling for selected text */
+::selection {
+    color: #fff;
+    background-color: #f95959;  /* Red background and white text for selected content */
+}
+
+/* Title styling */
+.game-title {
+    font-size: 2.5rem;  /* Large font size for the game title */
+    text-align: center;
+    margin-bottom: 1.5rem;  /* Space between the title and the content below */
+    color: #f95959;  /* Red text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);  /* Subtle shadow for depth */
+}
+
+/* Container for the game (options and results) */
+.container {
+    padding: 2rem 7rem;
+    border-radius: 14px;  /* Rounded corners for the container */
+    background: #fff;  /* White background for contrast */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);  /* Soft shadow around the container */
+}
+
+/* Container for the result images (user and PC) */
+.result_images {
+    display: flex;
+    justify-content: center;  /* Center the images horizontally */
+    align-items: center;      /* Vertically align the images */
+    column-gap: 7rem;         /* Space between the two images */
+    width: 100%;              /* Full width to avoid left-slipping issues */
+}
+
+/* Animation for user choice shaking */
+.container.start .user_result {
+    transform-origin: left;
+    animation: userShake 0.7s ease infinite;
+}
+@keyframes userShake {
+    50% {
+        transform: rotate(10deg);  /* Small shake animation for the user result */
+    }
+}
+
+/* Animation for CPU choice shaking */
+.container.start .pc_result {
+    transform-origin: right;
+    animation: pcShake 0.7s ease infinite;
+}
+@keyframes pcShake {
+    50% {
+        transform: rotate(-10deg);  /* Small shake animation for the PC result */
+    }
+}
+
+/* Styling for the result images */
+.result_images img {
+    width: 100px;  /* Image size for the result images (user and PC) */
+}
+
+/* Rotate user result image */
+.user_result img {
+    transform: rotate(90deg);  /* Rotate user image to face the opponent */
+}
+
+/* Rotate PC result image */
+.pc_result img {
+    transform: rotate(-90deg) rotateY(180deg);  /* Rotate and flip the PC image */
+}
+
+/* Text display for the game result (e.g., User Wins, Draw) */
+.result {
+    text-align: center;
+    font-size: 2rem;
+    color: #f95959;  /* Red text color for the result */
+    margin-top: 1.5rem;  /* Space between the result and the images */
+}
+
+/* Styling for the option images (rock, paper, scissors) */
+.option_image img {
+    width: 50px;  /* Smaller size for the option images */
+}
+
+/* Container for the option images */
+.option_images {
+    display: flex;
+    align-items: center;
+    margin-top: 2.5rem;  /* Space between the options and the result */
+    justify-content: space-between;  /* Distribute the options evenly */
+}
+
+/* Disable clicks on option images during animation */
+.container.start .option_images {
+    pointer-events: none;
+}
+
+/* Styling for individual option images (container for rock, paper, scissors) */
+.option_image {
+    display: flex;
+    flex-direction: column;  /* Stack the image and the label vertically */
+    align-items: center;     /* Center the image and text horizontally */
+    opacity: 0.5;            /* Reduce opacity for inactive state */
+    cursor: pointer;         /* Pointer cursor on hover */
+    transition: opacity 0.3s ease;  /* Smooth transition for opacity change */
+}
+
+/* Hover effect on option images */
+.option_image:hover {
+    opacity: 1;  /* Fully opaque when hovered */
+}
+
+/* Active state for option images */
+.option_image.active {
+    opacity: 1;  /* Fully opaque when active */
+}
+
+/* Disable pointer events on images */
+.option_image img {
+    pointer-events: none;  
+}
+
+/* Styling for the option text (e.g., Rock, Paper, Scissors) */
+.option_image p {
+    color: #f95959;  /* Red text color for the option labels */
+    font-size: 1.235rem;  /* Slightly larger text size for the labels */
+    margin-top: 1rem;  /* Space between the image and the text */
+    pointer-events: none;  /* Disable interaction with the text */
+}
+
+/* Scoreboard Styling */
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.user-score, .pc-score {
+    font-size: 1.5rem;
+    color: #000000;
+}
